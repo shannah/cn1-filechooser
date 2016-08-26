@@ -6,7 +6,7 @@ Supported Platforms:
 
 ## Installation
 
-* Add CN1FileChooser.cn1lib to your project's lib directory and refresh your cn1libs.
+* Add [CN1FileChooser.cn1lib](bin/CN1FileChooser.cn1lib) to your project's lib directory and refresh your cn1libs.
 
 ## Code Sample:
 
