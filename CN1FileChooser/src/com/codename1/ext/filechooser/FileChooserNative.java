@@ -12,5 +12,5 @@ import com.codename1.system.NativeInterface;
  * @author shannah
  */
 public interface FileChooserNative extends NativeInterface {
-    
+    public boolean showNativeChooser(String accept);
 }

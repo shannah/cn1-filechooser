@@ -2,7 +2,10 @@
 
 Supported Platforms:
 
-* Only supported on Javascript port currently.
+* Javascript
+* iOS
+* Android
+* Simulator (JavaSE)
 
 ## Installation
 

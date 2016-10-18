@@ -5,6 +5,10 @@ var o = {};
     o.isSupported_ = function(callback) {
         callback.complete(true);
     };
+    //public boolean showNativeChooser(String accept)
+    o.showNativeChooser__java_lang_String = function(accept, callback) {
+        callback.complete(false);
+    }
 
 exports.com_codename1_ext_filechooser_FileChooserNative= o;
 
