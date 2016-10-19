@@ -69,6 +69,11 @@ public class FileChooser {
     
     public static boolean isAvailable() {
         try {
+            if ("win".equals(Display.getInstance().getPlatformName())) {
+                // We don't have native interfaces yet in UWP so this is a quick
+                // hack to indicate that we do indeed support windows.
+                return true;
+            }
             System.out.println("Checking if is available");
             return nativePeer().isSupported();
         } catch (Exception ex) {
@@ -146,6 +151,26 @@ public class FileChooser {
                 mimetypes = sb.toString().substring(0, sb.length()-1);
             }
             d.setProperty(key, mimetypes);
+            
+            
+            key = "windows.openGallery.accept";
+            sb = new StringBuilder();
+            for (String part : parts) {
+                part = part.trim();
+                if (part.length() == 0) {
+                    continue;
+                }
+                if (part.indexOf('/') > 0) {
+                    String ext = guessExtension(part, true);
+                    if (ext.length() != 0) {
+                        sb.append(ext).append(",");
+                    }
+                } else if (part.charAt(0) == '.') {
+                    sb.append(part).append(",");
+                }
+            }
+            String exts = sb.length() > 0 ? sb.toString().substring(0, sb.length()-1) : "*";
+            d.setProperty(key, exts);
             
             // Set the javase accept
             key = "javase.openGallery.accept";

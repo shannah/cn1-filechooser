@@ -17,6 +17,7 @@ static int popoverSupported()
 }
 
 //public boolean showNativeChooser(String accept)
+//public boolean showNativeChooser(String accept)
 -(BOOL)showNativeChooser: (NSString*)accept {
     //accept = @"pdf,jpg,png,txt,rtf";
     id me = self;
@@ -30,24 +31,33 @@ static int popoverSupported()
         [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
          
          */
-        UIDocumentMenuViewController *documentProviderMenu =
-        [[UIDocumentMenuViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
-                                                             inMode:UIDocumentPickerModeImport];
+        @try {
+            UIDocumentMenuViewController *documentProviderMenu =
+            [[UIDocumentMenuViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
+                                                                 inMode:UIDocumentPickerModeImport];
+            documentProviderMenu.delegate = me;
+            if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
+                [documentProviderMenu addOptionWithTitle:@"Images" image:nil order:UIDocumentMenuOrderLast handler:^{
+                    [me openGallery:0];
+                }];
+                
+            }
+            if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
+                [documentProviderMenu addOptionWithTitle:@"Videos" image:nil order:UIDocumentMenuOrderLast handler:^{
+                    [me openGallery:1];
+                }];
+                
+            }
+            if (isIPad()) {
+                documentProviderMenu.popoverPresentationController.sourceView = [[CodenameOne_GLViewController instance] view];
+                documentProviderMenu.popoverPresentationController.sourceRect = CGRectMake(CN1lastTouchX, CN1lastTouchY, 1, 1);
+            }
+            [[CodenameOne_GLViewController instance] presentViewController:documentProviderMenu animated:YES completion:nil];
+        } @catch (NSException *e) {
+            NSString * reason = e.reason;
+        }
         
-        documentProviderMenu.delegate = me;
-        if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
-            [documentProviderMenu addOptionWithTitle:@"Images" image:nil order:UIDocumentMenuOrderLast handler:^{
-                [me openGallery:0];
-            }];
-
-        }
-        if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
-            [documentProviderMenu addOptionWithTitle:@"Videos" image:nil order:UIDocumentMenuOrderLast handler:^{
-                [me openGallery:1];
-            }];
-            
-        }
-        [[CodenameOne_GLViewController instance] presentViewController:documentProviderMenu animated:YES completion:nil];
+        
         POOL_END();
     });
     return YES;
