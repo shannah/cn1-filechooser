@@ -9,7 +9,9 @@ Supported Platforms:
 
 ## Installation
 
-* Add [CN1FileChooser.cn1lib](bin/CN1FileChooser.cn1lib) to your project's lib directory and refresh your cn1libs.
+1. Add [CN1FileChooser.cn1lib](bin/CN1FileChooser.cn1lib) to your project's lib directory and refresh your cn1libs.
+2. If deploying to iOS, you'll need to make sure that your App ID includes iCloud support.  (Currently it should not be associated with any iCloud containers).
+
 
 ## Code Sample:
 

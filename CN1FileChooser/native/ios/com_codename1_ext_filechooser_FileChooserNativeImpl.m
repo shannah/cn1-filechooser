@@ -3,6 +3,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "com_codename1_ext_filechooser_FileChooser.h"
 
+extern int isIPad();
+extern int CN1lastTouchX;
+extern int CN1lastTouchY;
 
 static UIPopoverController* popoverController;
 static int popoverSupported()
