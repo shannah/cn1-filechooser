@@ -74,7 +74,7 @@ public class FileChooser {
                 // hack to indicate that we do indeed support windows.
                 return true;
             }
-            System.out.println("Checking if is available");
+            //System.out.println("Checking if is available");
             return nativePeer().isSupported();
         } catch (Exception ex) {
             return false;
@@ -184,6 +184,8 @@ public class FileChooser {
                     String ext = guessExtension(part, false);
                     if (ext.length() != 0) {
                         sb.append(ext).append(",");
+                    } else if (part.equals("*/*")) {
+                        sb.append("*").append(",");
                     }
                 } else if (part.charAt(0) == '.') {
                     sb.append(part.substring(1)).append(",");
