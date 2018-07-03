@@ -67,6 +67,22 @@ public class FileChooser {
         return nativePeer;
     }
     
+    private static final String KEY_OPEN_FILES_IN_PLACE="openGallery.openFilesInPlace";
+    
+    /**
+     * Sets a flag that causes the simulator to open files in place (i.e. without copying the file).
+     */
+    public static void setOpenFilesInPlace(boolean inPlace) {
+        Display.getInstance().setProperty(KEY_OPEN_FILES_IN_PLACE, inPlace ? "true":"false");
+    }
+    
+    /**
+     * If true, then the simulator will open files in place rather than copying files upon opening.
+     */
+    public static boolean isOpenFilesInPlace() {
+        return "true".equals(Display.getInstance().getProperty(KEY_OPEN_FILES_IN_PLACE, "false"));
+    }
+    
     public static boolean isAvailable() {
         try {
             if ("win".equals(Display.getInstance().getPlatformName())) {
