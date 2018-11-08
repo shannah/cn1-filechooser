@@ -5,6 +5,7 @@
  */
 package com.codename1.ext.filechooser;
 
+import com.codename1.io.Util;
 import com.codename1.system.NativeLookup;
 import com.codename1.ui.Display;
 import com.codename1.ui.events.ActionEvent;
@@ -131,10 +132,14 @@ public class FileChooser {
         }
         return "";
     }
-   
     
     public static void showOpenDialog(String accept, ActionListener onComplete) {
-        
+        showOpenDialog(false, accept, onComplete);
+    }
+    
+    private static boolean lastRequestIsMulti=false;
+    public static void showOpenDialog(boolean multi, String accept, ActionListener onComplete) {
+        lastRequestIsMulti = multi;
         if (isAvailable()) {
             System.out.println("Is available");
             Display d = Display.getInstance();
@@ -215,9 +220,9 @@ public class FileChooser {
             String platform = d.getPlatformName();
             if ("ios".equals(platform) && !d.isSimulator()) {
                 callback = onComplete;
-                nativePeer().showNativeChooser(extensions);
+                nativePeer().showNativeChooser(extensions, multi);
             } else {
-                d.openGallery(onComplete, -9999);
+                d.openGallery(onComplete, multi?-9998:-9999);
             }
         } else {
             onComplete.actionPerformed(null);
@@ -230,7 +235,11 @@ public class FileChooser {
         if (callback != null) {
             Display.getInstance().callSerially(()->{
                 if (callback != null) {
-                    callback.actionPerformed(new ActionEvent(path));
+                    if (lastRequestIsMulti) {
+                        callback.actionPerformed(new ActionEvent(Util.split(path, "\n")));
+                    } else {
+                        callback.actionPerformed(new ActionEvent(path));
+                    }
                     callback = null;
                 }
             });

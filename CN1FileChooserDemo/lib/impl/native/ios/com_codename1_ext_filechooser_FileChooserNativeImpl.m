@@ -21,19 +21,26 @@ static int popoverSupported()
 
 //public boolean showNativeChooser(String accept)
 //public boolean showNativeChooser(String accept)
--(BOOL)showNativeChooser: (NSString*)accept {
+-(BOOL)showNativeChooser: (NSString*)accept param:(BOOL)multi {
     //accept = @"pdf,jpg,png,txt,rtf";
     id me = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         POOL_BEGIN();
-        /*
-        UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
-                                                                                                                inMode:UIDocumentPickerModeImport];
-        documentPicker.delegate = me;
-        documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
-        [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
+        
+        @try {
+            UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
+                                                                                                                    inMode:UIDocumentPickerModeImport];
+            documentPicker.allowsMultipleSelection = multi;
+            
+            documentPicker.delegate = me;
+            documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
+           
+            [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
+        } @catch (NSException *e) {
+            
+        }
          
-         */
+        /**
         @try {
             UIDocumentMenuViewController *documentProviderMenu =
             [[UIDocumentMenuViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
@@ -59,16 +66,25 @@ static int popoverSupported()
         } @catch (NSException *e) {
             NSString * reason = e.reason;
         }
-        
+        */
         
         POOL_END();
     });
     return YES;
 }
 
-- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
+    NSMutableString *urlString=[[NSMutableString alloc] init];
+    BOOL first = YES;
+    for (NSURL* url in urls) {
+        if (first) {
+            first = NO;
+            [urlString appendString:@"\n"];
+        }
+        [urlString appendString:[url path]];
+    }
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
-        com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG [url path]));
+        com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG urlString));
     }
 }
 

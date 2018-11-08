@@ -4,7 +4,8 @@
 }
 
 -(BOOL)isSupported;
--(BOOL)showNativeChooser: (NSString*)accept;
+-(BOOL)showNativeChooser: (NSString*)accept param1:(BOOL)multi;
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *>*)urls;
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url;
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller;
 - (void)documentMenu:(UIDocumentMenuViewController *)documentMenu didPickDocumentPicker:(UIDocumentPickerViewController *)documentPicker;

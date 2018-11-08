@@ -16,6 +16,9 @@ import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkManager;
 import com.codename1.io.Util;
 import com.codename1.ui.Button;
+import com.codename1.ui.CN;
+import com.codename1.ui.CheckBox;
+import com.codename1.ui.Image;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BoxLayout;
 import java.io.IOException;
@@ -51,10 +54,26 @@ public class FileChooserDemo {
         hi.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         hi.addComponent(new Label("Hi World"));
         Button b = new Button("Browse Files");
+        CheckBox multiSelect = new CheckBox("Multi-select");
         b.addActionListener(e->{
             if (FileChooser.isAvailable()) {
                 FileChooser.setOpenFilesInPlace(true);
-                FileChooser.showOpenDialog(".xls, .csv, text/plain", e2-> {
+                FileChooser.showOpenDialog(multiSelect.isSelected(), ".xls, .csv, text/plain", e2-> {
+                    if (e2 == null || e2.getSource() == null) {
+                        hi.add("No file was selected");
+                        hi.revalidate();
+                        return;
+                    }
+                    if (multiSelect.isSelected()) {
+                        String[] paths = (String[])e2.getSource();
+                        for (String path : paths) {
+                            System.out.println(path);
+                            CN.execute(path);
+                            
+                        }
+                        return;
+                    }
+                    
                     String file = (String)e2.getSource();
                     if (file == null) {
                         hi.add("No file was selected");
@@ -106,13 +125,34 @@ public class FileChooserDemo {
         testImage.addActionListener(e->{
             if (FileChooser.isAvailable()) {
                 
-                FileChooser.showOpenDialog(".pdf,application/pdf,.gif,image/gif,.png,image/png,.jpg,image/jpg,.tif,image/tif,.jpeg,.bmp", e2-> {
-
+                FileChooser.showOpenDialog(multiSelect.isSelected(), ".pdf,application/pdf,.gif,image/gif,.png,image/png,.jpg,image/jpg,.tif,image/tif,.jpeg,.bmp", e2-> {
+                    if (multiSelect.isSelected()) {
+                        String[] paths = (String[])e2.getSource();
+                        for (String path : paths) {
+                            System.out.println(path);
+                            try {
+                                Image img = Image.createImage(path);
+                                hi.add(new Label(img));
+                            } catch (Exception ex) {
+                                Log.e(ex);
+                            }
+                            
+                        }
+                        return;
+                       
+                    }
                     if(e2!=null && e2.getSource()!=null) {
 
                         String file = (String)e2.getSource();
+                        try {
+                            Image img = Image.createImage(file);
+                            hi.add(new Label(img));
+                            if (true) return;
+                        } catch (Exception ex) {
+                            Log.e(ex);
+                        }
 
-                        String filestack = "http://solutions.weblite.ca/testupload";
+                        String filestack = "http://solutions.weblite.ca/testupload.php";
 
                         MultipartRequest request = new MultipartRequest();
 
@@ -134,6 +174,7 @@ public class FileChooserDemo {
             }
         });
         hi.add(testImage);
+        hi.add(multiSelect);
         hi.show();
     }
 
