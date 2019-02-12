@@ -1,4 +1,4 @@
-# Filechooser for Codename One
+# Filechooser for [Codename One](https://www.codenameone.com)
 
 Supported Platforms:
 
@@ -43,3 +43,15 @@ if (FileChooser.isAvailable()) {
     });
 }
 ~~~~
+
+## Troubleshooting:
+
+See [Troubleshooting wiki page](https://github.com/shannah/cn1-filechooser/wiki/Troubleshooting) for common errors related to this library and how to fix them.
+
+## Other Useful Links
+
+* [New File Dialogs in Codename One (Blog Post)](https://www.codenameone.com/blog/native-file-open-dialogs.html)
+
+## Credits
+
+* Created by [Steve Hannah](https://sjhannah.com)
