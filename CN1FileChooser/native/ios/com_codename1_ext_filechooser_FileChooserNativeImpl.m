@@ -6,6 +6,7 @@
 extern int isIPad();
 extern int CN1lastTouchX;
 extern int CN1lastTouchY;
+static BOOL multiSelect = NO;
 
 static UIPopoverController* popoverController;
 static int popoverSupported()
@@ -21,26 +22,31 @@ static int popoverSupported()
 
 //public boolean showNativeChooser(String accept)
 //public boolean showNativeChooser(String accept)
--(BOOL)showNativeChooser: (NSString*)accept param:(BOOL)multi {
+-(BOOL)showNativeChooser: (NSString*)accept param1:(BOOL)multi {
     //accept = @"pdf,jpg,png,txt,rtf";
+    multiSelect = multi;
     id me = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         POOL_BEGIN();
-        
+        /*
         @try {
             UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
-                                                                                                                    inMode:UIDocumentPickerModeImport];
-            documentPicker.allowsMultipleSelection = multi;
+                                                                                                                inMode:UIDocumentPickerModeImport];
+            if (@available(iOS 11, *)) {
+                [documentPicker setAllowsMultipleSelection:multi];
+            }
             
             documentPicker.delegate = me;
             documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
            
-            [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
+            [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:^{
+                NSLog(@"Here we are");
+            }];
         } @catch (NSException *e) {
-            
+            NSLog(@"%@", e);
         }
-         
-        /**
+         */
+        
         @try {
             UIDocumentMenuViewController *documentProviderMenu =
             [[UIDocumentMenuViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
@@ -66,7 +72,7 @@ static int popoverSupported()
         } @catch (NSException *e) {
             NSString * reason = e.reason;
         }
-        */
+        
         
         POOL_END();
     });
@@ -84,7 +90,16 @@ static int popoverSupported()
         [urlString appendString:[url path]];
     }
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
         com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG urlString));
+    }
+}
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL*)url {
+    
+    if (controller.documentPickerMode == UIDocumentPickerModeImport) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+        com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG [url path]));
     }
 }
 
@@ -92,6 +107,9 @@ static int popoverSupported()
     //UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
     //                                                                                                        inMode:UIDocumentPickerModeImport];
     documentPicker.delegate = self;
+    if (@available(iOS 11, *)) {
+        [documentPicker setAllowsMultipleSelection:multiSelect];
+    }
     
     documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
     [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
@@ -99,6 +117,7 @@ static int popoverSupported()
 }
 
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
     com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
 }
 
