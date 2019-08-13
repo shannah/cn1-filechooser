@@ -206,6 +206,10 @@ static int popoverSupported()
     });
 }
 
+- (void)popoverControllerDidDismissPopover:(id)popoverController {
+    com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG nil);
+}
+
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     //[self dismissModalViewControllerAnimated:YES];
     //com_codename1_impl_ios_IOSImplementation_capturePictureResult___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG nil);
