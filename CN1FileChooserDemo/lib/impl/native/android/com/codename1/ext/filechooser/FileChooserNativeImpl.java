@@ -5,7 +5,7 @@ public class FileChooserNativeImpl {
         return true;
     }
     
-    public boolean showNativeChooser(String accept) {
+    public boolean showNativeChooser(String accept, boolean multi) {
         return false;
     }
 

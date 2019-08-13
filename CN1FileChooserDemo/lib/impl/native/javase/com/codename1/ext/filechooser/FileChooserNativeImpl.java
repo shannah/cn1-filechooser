@@ -5,7 +5,7 @@ public class FileChooserNativeImpl implements com.codename1.ext.filechooser.File
         return true;
     }
     
-    public boolean showNativeChooser(String accept) {
+    public boolean showNativeChooser(String accept, boolean multi) {
         return false;
     }
 

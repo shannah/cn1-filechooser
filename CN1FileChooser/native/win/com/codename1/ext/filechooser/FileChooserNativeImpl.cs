@@ -8,5 +8,9 @@ public class FileChooserNativeImpl {
         return false;
     }
 
+    public bool showNativeChooser(string accept, bool multi) {
+        return false;
+    }
+
 }
 }

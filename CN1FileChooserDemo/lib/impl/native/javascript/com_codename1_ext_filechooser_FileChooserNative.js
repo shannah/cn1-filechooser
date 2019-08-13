@@ -6,7 +6,7 @@ var o = {};
         callback.complete(true);
     };
     //public boolean showNativeChooser(String accept)
-    o.showNativeChooser__java_lang_String = function(accept, callback) {
+    o.showNativeChooser__java_lang_String_boolean = function(accept, multi, callback) {
         callback.complete(false);
     }
 

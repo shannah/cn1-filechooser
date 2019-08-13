@@ -4,5 +4,9 @@ public class FileChooserNativeImpl {
     public boolean isSupported() {
         return false;
     }
+    
+    public boolean showNativeChooser(String accept, boolean multi) {
+        return false;
+    }
 
 }
