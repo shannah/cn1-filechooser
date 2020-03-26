@@ -85,6 +85,7 @@ static int popoverSupported()
     for (NSURL* url in urls) {
         if (first) {
             first = NO;
+        } else {
             [urlString appendString:@"\n"];
         }
         [urlString appendString:[url path]];
