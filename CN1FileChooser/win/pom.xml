@@ -4,11 +4,11 @@
   <parent>
       <groupId>com.codenameone</groupId>
       <artifactId>filechooser</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
   </parent>
   <groupId>com.codenameone</groupId>
   <artifactId>filechooser-win</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
 
   <name>filechooser-win</name>
   <build>
