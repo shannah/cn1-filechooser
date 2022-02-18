@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="filechooserdemo-javase" />
+        <module name="filechooserdemo-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CN1FileChooserDemo" target="1.8" />
+      <module name="filechooserdemo" target="8" />
+      <module name="filechooserdemo-CN1FileChooser" target="1.8" />
+      <module name="filechooserdemo-cn1libs" target="1.8" />
+      <module name="filechooserdemo-common" target="1.8" />
+      <module name="filechooserdemo-javase" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: ATTACHED-JAR: com.codename1.ext.filechooser.demo:filechooserdemo-CN1FileChooser:common:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cn1libs/CN1FileChooser/jars/main.zip!/" />
+      <root url="jar://$PROJECT_DIR$/cn1libs/CN1FileChooser/jars/nativese.zip!/" />
+      <root url="jar://$PROJECT_DIR$/cn1libs/CN1FileChooser/jars/nativeand.zip!/" />
+      <root url="jar://$PROJECT_DIR$/cn1libs/CN1FileChooser/jars/nativeios.zip!/" />
+      <root url="jar://$PROJECT_DIR$/cn1libs/CN1FileChooser/jars/nativejavascript.zip!/" />
+      <root url="jar://$PROJECT_DIR$/cn1libs/CN1FileChooser/jars/nativewin.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
