@@ -5,70 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../CN1FileChooser/print-version.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CN1FileChooser/update-version.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/Stubber.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/codenameone_library_appended.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/codenameone_library_required.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/lib/CLDC11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/lib/CodenameOne.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/lib/CodenameOne_SRC.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/manifest.mf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/manifest.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/android/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/ios/com_codename1_ext_filechooser_FileChooserNativeImpl.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/ios/com_codename1_ext_filechooser_FileChooserNativeImpl.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/j2me/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/javascript/com_codename1_ext_filechooser_FileChooserNative.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/javase/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/rim/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/native/win/com/codename1/ext/filechooser/FileChooserNativeImpl.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/build-impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/genfiles.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/nativej2me.res" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/private/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/private/private.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/private/private.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/nbproject/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/src/com/codename1/ext/filechooser/FileChooser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/src/com/codename1/ext/filechooser/FileChooserNative.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNameOneBuildClient.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaSE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Versions.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codenameone_settings.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CLDC11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CN1FileChooser.cn1lib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CodenameOne.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CodenameOne_SRC.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/cls/com/codename1/ext/filechooser/FileChooser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/cls/com/codename1/ext/filechooser/FileChooserNative.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/android/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/ios/com_codename1_ext_filechooser_FileChooserNativeImpl.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/ios/com_codename1_ext_filechooser_FileChooserNativeImpl.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/j2me/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/javascript/com_codename1_ext_filechooser_FileChooserNative.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/javase/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/rim/com/codename1/ext/filechooser/FileChooserNativeImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/native/win/com/codename1/ext/filechooser/FileChooserNativeImpl.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/stubs/com/codename1/ext/filechooser/FileChooser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/impl/stubs/com/codename1/ext/filechooser/FileChooserNative.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.mf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/native/internal_tmp/com/codename1/ext/filechooser/FileChooserNativeImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/nativej2me.res" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codename1/ext/filechooser/demo/FileChooserDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.res" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooser/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

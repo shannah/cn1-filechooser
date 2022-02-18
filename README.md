@@ -9,8 +9,23 @@ Supported Platforms:
 
 ## Installation
 
-1. Add [CN1FileChooser.cn1lib](bin/CN1FileChooser.cn1lib) to your project's lib directory and refresh your cn1libs.
-2. If deploying to iOS, you'll need to make sure that your App ID includes iCloud support, and you must associate with at least one iCloud container.  [See iOS setup instructions here](https://github.com/shannah/cn1-filechooser/wiki/iOS-Setup)
+For instructions on installing cn1libs, see https://www.codenameone.com/blog/automatically-install-update-distribute-cn1libs-extensions.html[this tutorial].
+
+### Alternate Maven Installation
+
+If your project uses Maven, the above installation instructions will still work, but you can alternately simply add the Maven dependency to your common/pom.xml file:
+
+
+```xml
+<dependency>
+  <groupId>com.codenameone</groupId>
+  <artifactId>filechooser-lib</artifactId>
+  <version>1.0</version>
+  <type>pom</type>
+</dependency>
+```
+
+**IMPORTANT:** If deploying to iOS, you'll need to make sure that your App ID includes iCloud support, and you must associate with at least one iCloud container.  [See iOS setup instructions here](https://github.com/shannah/cn1-filechooser/wiki/iOS-Setup)
 
 
 ## Code Sample:
