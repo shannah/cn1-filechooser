@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="791ac7de-2314-4871-80e8-bb25b13cdfb9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/cn1libs/filechooserdemo-cn1libs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/common/filechooserdemo-common.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/common/src/main/java/com/codename1/ext/filechooser/demo/FileChooserDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/common/src/main/java/com/codename1/ext/filechooser/demo/FileChooserDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,22 +32,34 @@
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="1pD3iE4rAr4Bw5nFw0V4y00PCKh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Volumes/1TBSSD/Users/shannah/cn1_files/cn1libs/cn1-filechooser/CN1FileChooser"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/images" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-e2c057a1" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -57,11 +82,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="406" y="295" width="913" height="579" key="new project wizard" timestamp="1614789213887">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="406" y="295" width="913" height="579" key="new project wizard/2560.23.1680.1027/0.23.2560.1417@0.23.2560.1417" timestamp="1614789213887" />
   </component>
 </project>
