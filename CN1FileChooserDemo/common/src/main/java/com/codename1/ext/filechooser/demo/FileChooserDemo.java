@@ -1,10 +1,13 @@
 package com.codename1.ext.filechooser.demo;
 
 
+import com.codename1.components.MediaPlayer;
 import com.codename1.components.SpanLabel;
 import com.codename1.ext.filechooser.FileChooser;
 import com.codename1.io.File;
 import com.codename1.io.FileSystemStorage;
+import com.codename1.media.Media;
+import com.codename1.media.MediaManager;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Dialog;
@@ -159,6 +162,45 @@ public class FileChooserDemo {
             }
         });
         hi.add(testImage);
+
+        Button testVideo = new Button("Browse Videos");
+        testVideo.addActionListener(e->{
+            if (FileChooser.isAvailable()) {
+
+                FileChooser.showOpenDialog(multiSelect.isSelected(), "video/*,.mp4,.mov", e2-> {
+                    if (multiSelect.isSelected()) {
+                        String[] paths = (String[])e2.getSource();
+                        for (String path : paths) {
+                            System.out.println(path);
+                            try {
+                                MediaManager.createMedia(path, true).play();
+                            } catch (Exception ex) {
+                                Log.e(ex);
+                            }
+
+                        }
+                        return;
+
+                    }
+                    if(e2!=null && e2.getSource()!=null) {
+
+                        String file = (String)e2.getSource();
+                        System.out.println("Path: " + file);
+                        try {
+                            Media video = MediaManager.createMedia(file, true);
+                            MediaPlayer player = new MediaPlayer(video);
+                            hi.add(player);
+                            hi.revalidateLater();
+                        } catch (Exception ex) {
+                            Log.e(ex);
+                        }
+
+
+                    }
+                });
+            }
+        });
+        hi.add(testVideo);
         hi.add(multiSelect);
         hi.show();
     }
