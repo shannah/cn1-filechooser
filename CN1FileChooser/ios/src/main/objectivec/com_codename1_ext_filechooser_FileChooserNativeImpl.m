@@ -20,64 +20,53 @@ static int popoverSupported()
     return YES;
 }
 
-//public boolean showNativeChooser(String accept)
-//public boolean showNativeChooser(String accept)
 -(BOOL)showNativeChooser: (NSString*)accept param1:(BOOL)multi {
-    //accept = @"pdf,jpg,png,txt,rtf";
     multiSelect = multi;
     id me = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         POOL_BEGIN();
-        /*
-        @try {
-            UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
-                                                                                                                inMode:UIDocumentPickerModeImport];
-            if (@available(iOS 11, *)) {
-                [documentPicker setAllowsMultipleSelection:multi];
-            }
-            
-            documentPicker.delegate = me;
-            documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
-           
-            [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:^{
-                NSLog(@"Here we are");
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose File"
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+
+        UIAlertAction *documentAction = [UIAlertAction actionWithTitle:@"Documents" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [me openDocumentPickerWithAccept:accept];
+        }];
+        [alert addAction:documentAction];
+
+        if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
+            UIAlertAction *imageAction = [UIAlertAction actionWithTitle:@"Images" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [me openGallery:0];
             }];
-        } @catch (NSException *e) {
-            NSLog(@"%@", e);
+            [alert addAction:imageAction];
         }
-         */
-        
-        @try {
-            UIDocumentMenuViewController *documentProviderMenu =
-            [[UIDocumentMenuViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
-                                                                 inMode:UIDocumentPickerModeImport];
-            documentProviderMenu.delegate = me;
-            if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
-                [documentProviderMenu addOptionWithTitle:@"Images" image:nil order:UIDocumentMenuOrderLast handler:^{
-                    [me openGallery:0];
-                }];
-                
-            }
-            if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
-                [documentProviderMenu addOptionWithTitle:@"Videos" image:nil order:UIDocumentMenuOrderLast handler:^{
-                    [me openGallery:1];
-                }];
-                
-            }
-            if (isIPad()) {
-                documentProviderMenu.popoverPresentationController.sourceView = [[CodenameOne_GLViewController instance] view];
-                documentProviderMenu.popoverPresentationController.sourceRect = CGRectMake(CN1lastTouchX, CN1lastTouchY, 1, 1);
-            }
-            [[CodenameOne_GLViewController instance] presentViewController:documentProviderMenu animated:YES completion:nil];
-        } @catch (NSException *e) {
-            NSString * reason = e.reason;
+
+        if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
+            UIAlertAction *videoAction = [UIAlertAction actionWithTitle:@"Videos" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [me openGallery:1];
+            }];
+            [alert addAction:videoAction];
         }
-        
-        
+
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
+        }];
+        [alert addAction:cancelAction];
+
+        if (isIPad()) {
+            alert.popoverPresentationController.sourceView = [[CodenameOne_GLViewController instance] view];
+            alert.popoverPresentationController.sourceRect = CGRectMake(CN1lastTouchX, CN1lastTouchY, 1, 1);
+        }
+
+        [[CodenameOne_GLViewController instance] presentViewController:alert animated:YES completion:nil];
+
         POOL_END();
     });
     return YES;
 }
+
+
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
     NSMutableString *urlString=[[NSMutableString alloc] init];
@@ -97,24 +86,11 @@ static int popoverSupported()
 }
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL*)url {
-    
+
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
         [controller dismissViewControllerAnimated:YES completion:nil];
         com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG [url path]));
     }
-}
-
-- (void)documentMenu:(UIDocumentMenuViewController *)documentMenu didPickDocumentPicker:(UIDocumentPickerViewController *)documentPicker {
-    //UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
-    //                                                                                                        inMode:UIDocumentPickerModeImport];
-    documentPicker.delegate = self;
-    if (@available(iOS 11, *)) {
-        [documentPicker setAllowsMultipleSelection:multiSelect];
-    }
-    
-    documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
-    [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
-    
 }
 
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
@@ -122,35 +98,30 @@ static int popoverSupported()
     com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
 }
 
-- (void)documentMenuWasCancelled:(UIDocumentMenuViewController *)documentMenu {
-    com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
-
-}
-
 -(NSString *) preferredUTIForExtension:(NSString *)ext
 {
-    // Request the UTI for the file extension
     CFStringRef str = (__bridge CFStringRef)ext;
-    
-    CFStringRef theUTI = /*(__bridge_transfer NSString *)*/
-        UTTypeCreatePreferredIdentifierForTag(
-            kUTTagClassFilenameExtension,
-           str, nil);
-    NSString *uti = (__bridge NSString*)theUTI;
-    return uti;
+    CFStringRef theUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, str, NULL);
+    if (theUTI != NULL) {
+        NSString *uti = (__bridge_transfer NSString *)theUTI;
+        return uti;
+    } else {
+        return nil;
+    }
 }
+
 
 -(NSArray *) preferredUTIsForExtensions:(NSString *)exts {
     NSArray *arr = [exts componentsSeparatedByString:@","];
     NSMutableArray *out = [NSMutableArray arrayWithCapacity:[arr count]];
-    NSMutableString *string = [NSMutableString stringWithString:@""];
     for (NSString *ext in arr) {
-        [out addObject:[self preferredUTIForExtension:ext]];
-
+        NSString *uti = [self preferredUTIForExtension:ext];
+        if (uti != nil) {
+            [out addObject:uti];
+        } else {
+            NSLog(@"Warning: Could not find UTI for extension %@", ext);
+        }
     }
-    //[arr autorelease];
-    //[string autorelease];
-    //[out autorelease];
     return out;
 }
 
@@ -167,13 +138,13 @@ static int popoverSupported()
             sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         }
         popoverController = nil;
-        
+
 #ifndef CN1_USE_ARC
         UIImagePickerController* pickerController = [[[UIImagePickerController alloc] init] autorelease];
 #else
         UIImagePickerController* pickerController = [[UIImagePickerController alloc] init];
 #endif
-        
+
         pickerController.delegate = me;
         pickerController.sourceType = sourceType;
         if (type==0){
@@ -183,7 +154,7 @@ static int popoverSupported()
         } else if (type==2){
             pickerController.mediaTypes = [[NSArray alloc] initWithObjects:(NSString*)kUTTypeMovie, (NSString*)kUTTypeImage,  nil];
         }
-        
+
         if(popoverSupported()) {
 #ifndef CN1_USE_ARC
             popoverController = [[[NSClassFromString(@"UIPopoverController") alloc]
@@ -243,9 +214,9 @@ static int popoverSupported()
                 UIGraphicsEndImageContext();
             }
 #endif
-            
+
             NSData* data = UIImageJPEGRepresentation(image, 90 / 100.0f);
-            
+
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = [paths objectAtIndex:0];
             NSString *path = [documentsDirectory stringByAppendingPathComponent:@"temp_image.jpg"];
@@ -260,15 +231,41 @@ static int popoverSupported()
             //com_codename1_impl_ios_IOSImplementation_capturePictureResult___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG path));
             POOL_END();
         });
-        
+
     } else {
         // was movie type
-        NSString *moviePath = [[info objectForKey: UIImagePickerControllerMediaURL] absoluteString];
-        moviePath = [NSString stringWithFormat: @"file://%@", moviePath];
-        //com_codename1_impl_ios_IOSImplementation_captureMovieResult___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG moviePath));
-        com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG moviePath));
+        NSURL *mediaURL = [info objectForKey:UIImagePickerControllerMediaURL];
+        NSString *sourcePath = [mediaURL path];
+
+        // Extract the original file name and extension
+        NSString *fileName = [sourcePath lastPathComponent];
+        NSString *extension = [sourcePath pathExtension];
+
+        // Create a destination path in the documents directory using the original file name
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *destinationPath = [documentsDirectory stringByAppendingPathComponent:fileName];
+
+        NSError *error = nil;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+
+        // Remove existing file at destinationPath if any
+        if ([fileManager fileExistsAtPath:destinationPath]) {
+            [fileManager removeItemAtPath:destinationPath error:nil];
+        }
+
+        // Copy the video file to the documents directory
+        BOOL success = [fileManager copyItemAtPath:sourcePath toPath:destinationPath error:&error];
+        if (!success) {
+            NSLog(@"Error copying movie file: %@", [error localizedDescription]);
+            com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
+        } else {
+            NSString *path = [NSString stringWithFormat: @"file://%@", destinationPath];
+            com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG path));
+        }
     }
-    
+
+
     if(popoverSupported() && popoverController != nil) {
         [popoverController dismissPopoverAnimated:YES];
         popoverController.delegate = nil;
@@ -280,12 +277,37 @@ static int popoverSupported()
         [picker dismissModalViewControllerAnimated:YES];
 #endif
     }
-    
+
     //picker.delegate = nil;
     //picker = nil;
     POOL_END();
 }
 
+
+-(void)openDocumentPickerWithAccept:(NSString *)accept {
+    id me = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        POOL_BEGIN();
+
+        UIDocumentPickerViewController *documentPicker =
+        [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self preferredUTIsForExtensions:accept]
+                                                               inMode:UIDocumentPickerModeImport];
+        documentPicker.delegate = me;
+        if (@available(iOS 11, *)) {
+            [documentPicker setAllowsMultipleSelection:multiSelect];
+        }
+
+        documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
+        if (isIPad()) {
+            documentPicker.popoverPresentationController.sourceView = [[CodenameOne_GLViewController instance] view];
+            documentPicker.popoverPresentationController.sourceRect = CGRectMake(CN1lastTouchX, CN1lastTouchY, 1, 1);
+        }
+
+        [[CodenameOne_GLViewController instance] presentViewController:documentPicker animated:YES completion:nil];
+
+        POOL_END();
+    });
+}
 
 
 @end
