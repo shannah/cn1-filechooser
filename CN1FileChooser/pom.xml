@@ -202,32 +202,18 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-
-    <!-- The sign-artifacts profile is used for signing artifacts when you deploy to Maven
-        central.  In order for this to work, you also need to add the following to your
-        settings.xml file:
-
-        <profiles>
-            <profile>
-              <id>sign-artifacts</id>
-              <activation><activeByDefault>true</activeByDefault></activation>
-              <properties>
-                  <gpg.passphrase>YOUR_PASSPHRASE</gpg.passphrase>
-              </properties>
-            </profile>
-        </profiles>
-        <servers>
-            <server>
-              <id>nexus-staging</id>
-              <username>YOUR_USERNAME</username>
-              <password>YOUR_PASSWORD</password>
-            </server>
-        </servers>
-    -->
-
     <profiles>
         <profile>
             <id>sign-artifacts</id>
@@ -254,11 +240,4 @@
             </build>
         </profile>
     </profiles>
-    <distributionManagement>
-        <repository>
-            <id>nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>
