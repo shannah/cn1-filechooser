@@ -6,14 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="filechooserdemo-javase" />
-        <module name="filechooserdemo-common" />
+        <module name="filechooser-common" />
+        <module name="filechooser-javase" />
+        <module name="filechooser-javascript" />
+        <module name="filechooser-android" />
+        <module name="filechooser-ios" />
+        <module name="filechooser-win" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CN1FileChooserDemo" target="1.8" />
-      <module name="filechooserdemo-CN1FileChooser" target="1.8" />
-      <module name="filechooserdemo-javase" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

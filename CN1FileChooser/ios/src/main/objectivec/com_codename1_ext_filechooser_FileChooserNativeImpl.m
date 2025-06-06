@@ -26,41 +26,51 @@ static int popoverSupported()
     dispatch_async(dispatch_get_main_queue(), ^{
         POOL_BEGIN();
 
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose File"
-                                                                       message:nil
-                                                                preferredStyle:UIAlertControllerStyleActionSheet];
-
-        UIAlertAction *documentAction = [UIAlertAction actionWithTitle:@"Documents" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [me openDocumentPickerWithAccept:accept];
-        }];
-        [alert addAction:documentAction];
-
-        if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
-            UIAlertAction *imageAction = [UIAlertAction actionWithTitle:@"Images" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (@available(iOS 17, *)) {
+            // On iOS 17+, present the appropriate picker directly to avoid assertion failure
+            if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
                 [me openGallery:0];
-            }];
-            [alert addAction:imageAction];
-        }
-
-        if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
-            UIAlertAction *videoAction = [UIAlertAction actionWithTitle:@"Videos" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            } else if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
                 [me openGallery:1];
+            } else {
+                [me openDocumentPickerWithAccept:accept];
+            }
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose File"
+                                                                           message:nil
+                                                                    preferredStyle:UIAlertControllerStyleActionSheet];
+
+            UIAlertAction *documentAction = [UIAlertAction actionWithTitle:@"Documents" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [me openDocumentPickerWithAccept:accept];
             }];
-            [alert addAction:videoAction];
+            [alert addAction:documentAction];
+
+            if ([accept containsString:@"image"] || [accept containsString:@"jpg"] || [accept containsString:@"png"] || [accept containsString:@"tif"] || [accept containsString:@"gif"]) {
+                UIAlertAction *imageAction = [UIAlertAction actionWithTitle:@"Images" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [me openGallery:0];
+                }];
+                [alert addAction:imageAction];
+            }
+
+            if ([accept containsString:@"video"] || [accept containsString:@"avi"] || [accept containsString:@"mpg"] || [accept containsString:@"mp4"] || [accept containsString:@"mpeg"] || [accept containsString:@"mov"]) {
+                UIAlertAction *videoAction = [UIAlertAction actionWithTitle:@"Videos" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [me openGallery:1];
+                }];
+                [alert addAction:videoAction];
+            }
+
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
+            }];
+            [alert addAction:cancelAction];
+
+            if (isIPad()) {
+                alert.popoverPresentationController.sourceView = [[CodenameOne_GLViewController instance] view];
+                alert.popoverPresentationController.sourceRect = CGRectMake(CN1lastTouchX, CN1lastTouchY, 1, 1);
+            }
+
+            [[CodenameOne_GLViewController instance] presentViewController:alert animated:YES completion:nil];
         }
-
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            com_codename1_ext_filechooser_FileChooser_fireNativeOnComplete___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG JAVA_NULL);
-        }];
-        [alert addAction:cancelAction];
-
-        if (isIPad()) {
-            alert.popoverPresentationController.sourceView = [[CodenameOne_GLViewController instance] view];
-            alert.popoverPresentationController.sourceRect = CGRectMake(CN1lastTouchX, CN1lastTouchY, 1, 1);
-        }
-
-        [[CodenameOne_GLViewController instance] presentViewController:alert animated:YES completion:nil];
-
         POOL_END();
     });
     return YES;

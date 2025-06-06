@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="791ac7de-2314-4871-80e8-bb25b13cdfb9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/src/main/objectivec/com_codename1_ext_filechooser_FileChooserNativeImpl.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/cn1libs/filechooserdemo-cn1libs.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/common/filechooserdemo-common.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/common/src/main/java/com/codename1/ext/filechooser/demo/FileChooserDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/common/src/main/java/com/codename1/ext/filechooser/demo/FileChooserDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CN1FileChooserDemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CN1FileChooserDemo/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="791ac7de-2314-4871-80e8-bb25b13cdfb9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,9 +19,9 @@
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="1pD3iE4rAr4Bw5nFw0V4y00PCKh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -43,7 +30,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.filechooser [install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "fix/6-assertion-failure",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Volumes/1TBSSD/Users/shannah/cn1_files/cn1libs/cn1-filechooser/CN1FileChooser"
   }
@@ -53,13 +44,6 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/images" />
     </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-e2c057a1" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
