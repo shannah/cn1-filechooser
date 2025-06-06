@@ -29,20 +29,6 @@
         <module>common</module>
         <module>javase</module>
     </modules>
-    
-    <!--
-  <distributionManagement>
-      <snapshotRepository>
-        <id>sonatype-nexus-snapshots</id>
-        <name>Sonatype Nexus Snapshots</name>
-        <url>${sonatypeOssDistMgmtSnapshotsUrl}</url>
-      </snapshotRepository>
-      <repository>
-        <id>sonatype-nexus-staging</id>
-        <name>Nexus Release Repository</name>
-        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-      </repository>
-    </distributionManagement>-->
 	  
     <properties>
         <cn1.version>7.0.8-b6</cn1.version>
@@ -55,14 +41,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <cn1app.name>filechooser-tests</cn1app.name>
-        
-        
-        
     </properties>
-
-
-		  
-		  
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -75,12 +54,8 @@
                 <artifactId>codenameone-javase</artifactId>
                 <version>${cn1.version}</version>
             </dependency>
-            
-
         </dependencies>
     </dependencyManagement>
-    
-			
     <build>
         <pluginManagement>
             <plugins>
@@ -92,15 +67,4 @@
             </plugins>
         </pluginManagement>
     </build>
-    
-			
-    <repositories>
-        
-
-
-        
-    </repositories>
-    <pluginRepositories>
-
-    </pluginRepositories>
 </project>
